@@ -1,4 +1,7 @@
 ---
+# Ansible
+ansible_python_interpreter: "/usr/bin/env python3"
+
 # Sentry
 sentry_db_user: "sentry"
 sentry_db_password: "{{ monitoring_sentry_db_password }}"
@@ -100,7 +103,7 @@ graylog_version: "3.3"
 graylog_full_version: "3.3.1*"
 graylog_password_secret: "{{ monitoring_graylog_password_secret }}"
 graylog_root_username: "admin"
-graylog_root_password: "{{ monitoring_graylog_root_password }}"
+graylog_root_password_sha2: "{{ monitoring_graylog_root_password | hash('sha256') }}"
 graylog_es_host: "127.0.0.1"
 graylog_es_port: 9200
 graylog_mongodb_version: "4.2"
